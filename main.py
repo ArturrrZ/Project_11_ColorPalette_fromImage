@@ -21,6 +21,7 @@ def select():
     filename=fd.askopenfilename(title='Select IMG', initialdir='/', filetypes=filetypes)
     # print(filename)
     place_image(filename)
+    dominants.image_path=filename
     dominants.dominant_colors(10)
     # bg = "rgb(0, 255, 0)",
     x=1
