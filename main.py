@@ -28,7 +28,7 @@ def select():
 
     for index, item in enumerate(dominants.colors):
 
-        print(f"Top {index+1} color as RGB: {item}\nas #HEX: {_from_rgb(item)}")
+        print(f"Top {index+1} with proportion: {round((dominants.proportions[index] * 100),2)}% \ncolor as RGB: {item}\nas #HEX: {_from_rgb(item)}")
         colors[index].config(text=_from_rgb(item),bg=_from_rgb(item), fg='black')
 
 def place_image(path):
