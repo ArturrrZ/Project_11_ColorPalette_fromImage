@@ -6,6 +6,7 @@ from read_colors import Read_Colors
 dominants=Read_Colors()
 filename=None
 picture=None
+
 def _from_rgb(rgb):
     """translates an rgb tuple of int to a tkinter friendly color code
     """
@@ -22,7 +23,11 @@ def select():
     place_image(filename)
     dominants.dominant_colors(10)
     # bg = "rgb(0, 255, 0)",
-    print(dominants.colors)
+    x=1
+    for color in dominants.colors:
+        print(f"Top {x} color as RGB: {color}\nas #HEX: {_from_rgb(color)}")
+        x+=1
+    # print(dominants.colors)
 
 
 def place_image(path):
