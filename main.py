@@ -1,8 +1,16 @@
 import tkinter as tk
 from tkinter import filedialog as fd
 from PIL import Image,ImageTk
+from read_colors import Read_Colors
+
+dominants=Read_Colors()
 filename=None
 picture=None
+def _from_rgb(rgb):
+    """translates an rgb tuple of int to a tkinter friendly color code
+    """
+    return "#%02x%02x%02x" % rgb
+
 def select():
     global filename
     filetypes = (
@@ -12,6 +20,9 @@ def select():
     filename=fd.askopenfilename(title='Select IMG', initialdir='/', filetypes=filetypes)
     # print(filename)
     place_image(filename)
+    dominants.dominant_colors(10)
+    # bg = "rgb(0, 255, 0)",
+    print(dominants.colors)
 
 
 def place_image(path):
@@ -20,6 +31,9 @@ def place_image(path):
     picture = picture.resize((300, 300))
     picture = ImageTk.PhotoImage(picture)
     start_picture_img.config(image=picture)
+
+# def dominant_colors(number_of_colors):
+#
 
 
 window=tk.Tk()
@@ -45,5 +59,8 @@ start_picture=ImageTk.PhotoImage(start_picture)
 start_picture_img=tk.Label(image=start_picture)
 start_picture_img.grid(row=2,column=0)
 
+
+# top_1=tk.Label(text='Top 1',fg="white")
+# top_1.grid(row=4,column=0)
 
 window.mainloop()
